@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <title>
+        {% block title %} Document Base {% endblock %}
+    </title>
 </head>
 <body>
-
+  <div class='container' style="margin-bottom: 4em;">
+        <div id="navigation-bar">
+          <nav>
+            <ul>
+              <li><a href="#" id="logo">LOGO</a></li>
+              <li><a href=#>Home</a></li>
+              <li><a href=#>About</a></li>
+              <li><a href=#>Portfolio</a></li>
+              <li><a href=#>Services</a></li>
+              <li><a href=#>Contact</a></li>
+              <a href="#" id="menu-icon"></a>
+            </ul>
+          </nav>
+        </div>
+    </div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

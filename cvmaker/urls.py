@@ -3,5 +3,5 @@ from cvmaker import views
 
 
 urlpatterns = [
-    path('index/', views.IndexView.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
 ]

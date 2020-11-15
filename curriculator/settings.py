@@ -24,8 +24,9 @@ SECRET_KEY = '%8k7&)t(*zdajvijj9+_6*3b_#mzga7p*k()vb_o%(y2706+7_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'cvmaker',
 ]
 
@@ -120,3 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR, "static")
+STATIC_ROOT = "{}/assets/".format(BASE_DIR)

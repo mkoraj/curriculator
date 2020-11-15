@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Person {{ person.pk }} - Username: {{person.first_name}}{% endblock %}
+
+{% block page_css %}
+<style>
+    .border-black {
+        border-color: black;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="info">
+    <div class="info-row">
+        <div class="lead text-primary">Username  {{ person }}</div>
+        <div class="padding-md" style="color: red;">
+            <p>{{person.first_name}}</p>
+            <p>{{person.last_name}}</p>
+            <p>{{person.email}}</p>
+        </div>
+        <div class="padding-md" style="color: red;">
+            <p>{{person.first_name}}</p>
+            <p>{{person.last_name}}</p>
+            <p>{{person.email}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

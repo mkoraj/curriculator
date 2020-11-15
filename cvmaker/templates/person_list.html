@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} List Persons {% endblock %}
+
+
+{% block content %}
+<div class="scrolleable" style="background-color:tomato">
+    <ul class="nav justify-content-end">
+    </ul>
+
+    <br>
+
+    <table class="table table-hover table-secondary">
+        <thead class="thead-dark">
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Web</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for usp in page_obj %}
+            <tr>
+                <th>{{ usp.id }}</th>
+                <td>{{ usp.first_name }}</td>
+                <td>{{ usp.last_name }}</td>
+                <td>{{ usp.phone }}</td>
+                <td>{{ usp.email }}</td>
+                <td>{{ usp.webpage }}</td>
+
+                <td style="color: aqua;"> hola <i class="fas fa-cloud"></i> </td>
+                <td style="color: aqua;">
+                    <span>
+                    <a href="{% url 'cvmaker:person_detail' pk=usp.pk %}" class="btn btn-link btn-sm text-info" role="button">
+                            <i class="fas fa-folder-open"></i></span>
+
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="mailto:{{ usp.user.email }}">
+                        <i class="fa fa-envelope-square fa-fw"></i>
+                        {{ usp.user.email }}
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td class="text-secondary">No users yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1">
+                <i class="fa fa-angle-double-left fa-fw"></i>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                <i class="fa fa-angle-left fa-fw"></i>
+            </a>
+        </li>
+        {% endif %}
+
+        {% for i in page_obj.paginator.page_range %}
+        {% if i == page_obj.number %}
+            <li class="page-item"><a class="page-link">{{ i }}</a></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                <i class="fa fa-angle-right fa-fw"></i>
+            </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.num_pages }}">
+                <i class="fa fa-angle-double-right fa-fw"></i>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
+</div>
+{% endblock %}

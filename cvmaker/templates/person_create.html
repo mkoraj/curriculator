@@ -4,5 +4,18 @@
 {% block title %} Create Person {% endblock %}
 
 {% block content %}
-    {% crispy form %}
+<div>
+    <div class="split left">
+        <div class="centered">
+            {% crispy form %}
+        </div>
+    </div>
+
+    <div class="split right">
+        <div class="centered">
+            <h2>John Doe</h2>
+            <p>Some text here too.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

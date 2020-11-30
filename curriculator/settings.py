@@ -122,4 +122,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR, "static")
-STATIC_ROOT = "{}/assets/".format(BASE_DIR)
